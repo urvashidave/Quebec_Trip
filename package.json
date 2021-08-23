@@ -21,7 +21,7 @@
 		"extends": "react-app"
 	},
 	"browserslist": {
-		"jalpan AND urvashiduction": [
+		"production": [
 			">0.2%",
 			"not dead",
 			"not op_mini all"
