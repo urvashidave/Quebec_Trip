@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import images from "./data";
 import { SRLWrapper } from "simple-react-lightbox";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const options = {
 	// settings: {
@@ -66,17 +68,15 @@ function App() {
 			</div>
 			<SRLWrapper options={options}>
 				<div className="container">
-					{filteredImages.map((image) => (
-						<div key={image.id} className="image-card">
-							{image.id}
-							<a href={`/images/${image.imageName}`}>
-								<img
-									className="image"
-									src={`/images/${image.imageName}`}
-									alt=""
-								/>
-							</a>
-						</div>
+					{filteredImages.map((image, scrollPosition) => (
+						<LazyLoadImage
+							key={image.id}
+							className="image-card"
+							className="image"
+							src={`/images/${image.imageName}`}
+							alt=""
+							effect="blur"
+						/>
 					))}
 				</div>
 				<h3 className="heading">
